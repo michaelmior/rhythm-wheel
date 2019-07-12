@@ -1292,6 +1292,22 @@
     react-inspector "^3.0.2"
     uuid "^3.3.2"
 
+"@storybook/addon-backgrounds@^5.1.9":
+  version "5.1.9"
+  resolved "https://registry.npm.taobao.org/@storybook/addon-backgrounds/download/@storybook/addon-backgrounds-5.1.9.tgz#bb02aaaf9246624b06630a40f008cf81496b5199"
+  integrity sha1-uwKqr5JGYksGYwpA8AjPgUlrUZk=
+  dependencies:
+    "@storybook/addons" "5.1.9"
+    "@storybook/api" "5.1.9"
+    "@storybook/client-logger" "5.1.9"
+    "@storybook/components" "5.1.9"
+    "@storybook/core-events" "5.1.9"
+    "@storybook/theming" "5.1.9"
+    core-js "^3.0.1"
+    memoizerific "^1.11.3"
+    react "^16.8.3"
+    util-deprecate "^1.0.2"
+
 "@storybook/addon-links@^5.1.9":
   version "5.1.9"
   resolved "https://registry.npm.taobao.org/@storybook/addon-links/download/@storybook/addon-links-5.1.9.tgz#944237bfb318cf4741b417d2b452b0b644650868"

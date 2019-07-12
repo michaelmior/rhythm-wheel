@@ -15,7 +15,7 @@ class Circle extends Component {
 }
 
 Circle.defaultProps = {
-  backgroundColor: '#FFF',
+  backgroundColor: 'transparent',
   borderColor: '#000',
   radius: '100px'
 };
