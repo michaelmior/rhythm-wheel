@@ -1,5 +1,6 @@
 {
-  "name": "spyfall",
+  "name": "rhythm-wheel",
+  "homepage": "https://michaelmior.github.io/rhythm-wheel/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
