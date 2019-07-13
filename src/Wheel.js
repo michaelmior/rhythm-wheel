@@ -28,6 +28,7 @@ class Wheel extends Component {
     var soundObject = {};
     var getSound = new XMLHttpRequest();
 
+    // Fetch the audio file
     getSound.open('GET', path, true);
     getSound.responseType = 'arraybuffer';
     getSound.onload = () => {
@@ -37,6 +38,7 @@ class Wheel extends Component {
     }
     getSound.send();
 
+    // Construct a play function which sets volume
     soundObject.play = (time) => {
       var volume = this.audioContext.createGain();
       volume.gain.value = this.props.sound.volume;
@@ -95,12 +97,17 @@ class Wheel extends Component {
   }
 
   updateBounce() {
-    const coords = this.pointCoords((this.audioContext.currentTime - this.startTickTime) * (this.props.bpm / 15) % this.props.subdivisions);
+    // Calculate the new position of the bouncing ball and move it
+    const coords = this.pointCoords(
+      (this.audioContext.currentTime - this.startTickTime) *
+        (this.props.bpm / 15) % this.props.subdivisions);
+
     this.bounce.current.style.top = coords.y + 'px';
     this.bounce.current.style.left = coords.x + 'px';
   }
 
   futureTick() {
+    // Calculate the next time a beat will occur
     var noteLength = 60 / this.props.bpm;
     this.futureTickTime += 0.25 * noteLength;
     this.current = (this.current + 1) % (this.props.subdivisions);
@@ -118,9 +125,11 @@ class Wheel extends Component {
     this.setState((state) => {
       let active = state.active.slice();
       if (active.includes(beat)) {
+        // Remove an existing beat
         const index = active.indexOf(beat);
         active.splice(index, 1);
       } else {
+        // Add a new beat and re-sort
         active.push(beat);
         active.sort((a, b) => a - b);
       }
@@ -129,38 +138,68 @@ class Wheel extends Component {
   }
 
   render() {
+    // Generate lines connecting beats
     let lines = [];
+
+    // Make a copy of the active lines so we can add
+    // the first one twice to connect in a circle
     let lineIndexes = this.state.active.slice();
     lineIndexes.push(lineIndexes[0]);
+
+    // Starting with the second beat, draw lines connecting to the previous
     for (let i = 1; i < lineIndexes.length; i++) {
       const coords = this.pointCoords(lineIndexes[i]);
       const prevCoords = this.pointCoords(lineIndexes[i - 1]);
-      lines.push(<line key={'line' + i} x1={coords.x} y1={coords.y} x2={prevCoords.x} y2={prevCoords.y} stroke='black' strokeWidth='2' />);
+      lines.push(<line key={'line' + i}
+                       x1={coords.x}
+                       y1={coords.y}
+                       x2={prevCoords.x}
+                       y2={prevCoords.y}
+                       stroke='black'
+                       strokeWidth='2' />);
     }
 
     const coords = this.pointCoords(0);
-    return <div className='Wheel' style={{position: 'relative', padding: padding + 'px', display: 'inline-block'}}>
-      <svg style={{pointerEvents: 'none', position: 'absolute', top: padding / 2 + 'px', left: padding / 2 + 'px', zIndex: 100}} width={this.props.radius + smallRadius * 4} height={this.props.radius + smallRadius * 4}>
+    return <div className='Wheel' style={{padding: padding + 'px'}}>
+      {/* Add an SVG with lines connecting active beats */}
+      <svg className='beat-lines'
+           style={{top: padding / 2 + 'px', left: padding / 2 + 'px'}}
+           width={this.props.radius + smallRadius * 4}
+           height={this.props.radius + smallRadius * 4}>
         {lines}
       </svg>
 
-      <div ref={this.bounce} className='bounce' style={{position: 'absolute', top: coords.y + 'px', left: coords.x + 'px', zIndex: 999, pointerEvents: 'none'}}>
-        <Circle borderColor='goldenrod' backgroundColor='goldenrod' radius={(smallRadius * 2) + 'px'}/>
+      {/* Bouncing ball indicating position */}
+      <div ref={this.bounce}
+           className='bounce'
+           style={{top: coords.y + 'px', left: coords.x + 'px'}}>
+        <Circle borderColor='goldenrod'
+                backgroundColor='goldenrod'
+                radius={(smallRadius * 2) + 'px'}/>
       </div>
 
+      {/* Add the outer reference circle */}
       <div ref={this.refCircle}>
-        <Circle borderColor='white' radius={this.props.radius + 'px'}>{Array.from({length: this.props.subdivisions}, (_, i) => {
-        const coords = this.pointCoords(i);
-        return <div key={'refCircle' + i} style={{
-          cursor: 'pointer',
-          position: 'absolute',
-          top: (coords.y - padding - smallRadius * 1.6) + 'px',
-          left: (coords.x - padding - smallRadius * 1.5) + 'px'
-        }} onClick={this.handleClick.bind(this, i)}>
-          <Circle borderColor='white' backgroundColor='white' radius={(smallRadius * 2) + 'px'}/>
-        </div>
-        })}</Circle>
+        <Circle borderColor='white'
+                radius={this.props.radius + 'px'}>
+          {Array.from({length: this.props.subdivisions}, (_, i) => {
+            // Add each smaller circle indicating beats
+            const coords = this.pointCoords(i);
+            return <div key={'refCircle' + i} style={{
+              cursor: 'pointer',
+              position: 'absolute',
+              top: (coords.y - padding - smallRadius * 1.6) + 'px',
+              left: (coords.x - padding - smallRadius * 1.5) + 'px'
+            }} onClick={this.handleClick.bind(this, i)}>
+              <Circle borderColor='white'
+                      backgroundColor='white'
+                      radius={(smallRadius * 2) + 'px'}/>
+            </div>
+          })}
+        </Circle>
       </div>
+
+      {/* Add darker circles indicating active beats */}
       {this.state.active.map(i => {
         const coords = this.pointCoords(i);
         return <div key={'beatCircle' + i} style={{
@@ -169,9 +208,12 @@ class Wheel extends Component {
           left: coords.x + 'px',
           pointerEvents: 'none'
         }}>
-          <Circle borderColor='black' backgroundColor='black' radius={(smallRadius * 2) + 'px'}/>
+          <Circle borderColor='black'
+                  backgroundColor='black'
+                  radius={(smallRadius * 2) + 'px'}/>
         </div>
       })}
+
       <div className='name'>{this.props.sound.name}</div>
     </div>;
   }

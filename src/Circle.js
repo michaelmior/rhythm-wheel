@@ -4,7 +4,7 @@ import './Circle.css';
 
 class Circle extends Component {
   render() {
-    return <div className="Circle" style={{
+    return <div className='Circle' style={{
       backgroundColor: this.props.backgroundColor,
       borderColor: this.props.borderColor,
       borderRadius: this.props.radius,

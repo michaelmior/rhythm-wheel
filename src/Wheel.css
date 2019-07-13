@@ -1,3 +1,14 @@
+.Wheel {
+  position: relative;
+  display: inline-block;
+}
+
+.Wheel .beat-lines {
+  pointer-events: none;
+  position: absolute;
+  z-index: 100;
+}
+
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -17,4 +28,10 @@
 .Wheel .name {
   margin-top: 20px;
   font-weight: bold;
+}
+
+.Wheel .bounce {
+  position: absolute;
+  z-index: 999;
+  pointer-events: none;
 }
