@@ -1102,6 +1102,18 @@
   dependencies:
     "@hapi/hoek" "8.x.x"
 
+"@iconify/icons-uil@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npm.taobao.org/@iconify/icons-uil/download/@iconify/icons-uil-1.0.2.tgz#b925db20ea0782a48afeb96a63dcc56b4d48fa30"
+  integrity sha1-uSXbIOoHgqSK/rlqY9zFa01I+jA=
+
+"@iconify/react@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npm.taobao.org/@iconify/react/download/@iconify/react-1.1.0.tgz#482f6b717d268a0755619affc19ed29a2ae69e12"
+  integrity sha1-SC9rcX0migdVYZr/wZ7SmirmnhI=
+  dependencies:
+    react "^16.8.3"
+
 "@jest/console@^24.7.1":
   version "24.7.1"
   resolved "https://registry.npm.taobao.org/@jest/console/download/@jest/console-24.7.1.tgz#32a9e42535a97aedfe037e725bd67e954b459545"

@@ -4,6 +4,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@iconify/icons-uil": "^1.0.2",
+    "@iconify/react": "^1.1.0",
     "@storybook/addon-backgrounds": "^5.1.9",
     "gh-pages": "^2.0.1",
     "midi-writer-js": "^1.7.1",

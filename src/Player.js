@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import MidiWriter from 'midi-writer-js';
+import { Icon } from "@iconify/react";
+import exportIcon from '@iconify/icons-uil/export';
 
 import Wheel from './Wheel';
 
@@ -101,7 +103,10 @@ class Player extends Component {
                url: process.env.PUBLIC_URL + '/sounds/hat.mp3'
              }}/>
       <button onClick={this.handlePlayClick}>{this.state.playing ? 'Stop' : 'Play'}</button>
-      <button onClick={this.handleExportClick}>Export</button></div>;
+      <div style={{cursor: 'pointer', float: 'right'}} onClick={this.handleExportClick}>
+        <Icon icon={exportIcon} color='white'/>
+      </div>
+      </div>;
   }
 }
 
