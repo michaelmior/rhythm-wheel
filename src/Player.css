@@ -21,3 +21,18 @@
   text-transform: uppercase;
   margin-top: 50px;
 }
+
+.Player .bpm {
+  float: left;
+  margin-top: 10px;
+  color: #666;
+}
+
+.Player input {
+  color: #333;
+  text-align: right;
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  width: 30px;
+}

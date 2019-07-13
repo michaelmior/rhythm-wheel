@@ -13,7 +13,7 @@ class Player extends Component {
     super();
 
     this.hasPlayed = false;
-    this.state = {playing: false};
+    this.state = {bpm: 120, playing: false};
     this.drums = {
       crash: React.createRef(),
       hihat: React.createRef(),
@@ -40,6 +40,13 @@ class Player extends Component {
     element.click();
 
     document.body.removeChild(element);
+  }
+
+  handleBpmChange = (event) => {
+    const newBpm = parseInt(event.target.value);
+    this.setState((state) => {
+      return {...state, bpm: newBpm};
+    });
   }
 
   handlePlayClick = () => {
@@ -72,7 +79,7 @@ class Player extends Component {
     return <div className='Player' style={{width: '1000px', textAlign: 'center', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}>
       <Wheel ref={this.drums.crash}
              initialState={{active: [0]}}
-             bpm={120} sound={{
+             bpm={this.state.bpm} sound={{
                name: 'Crash',
                volume: 10,
                instrument: 49,
@@ -80,7 +87,7 @@ class Player extends Component {
              }}/>
       <Wheel ref={this.drums.kick}
              initialState={{active: [0, 8]}}
-             bpm={120} sound={{
+             bpm={this.state.bpm} sound={{
                name: 'Kick',
                volume: 10,
                instrument: 35,
@@ -88,7 +95,7 @@ class Player extends Component {
              }}/>
       <Wheel ref={this.drums.snare}
              initialState={{active: [4, 12]}}
-             bpm={120} sound={{
+             bpm={this.state.bpm} sound={{
                name: 'Snare',
                volume: 10,
                instrument: 38,
@@ -96,12 +103,13 @@ class Player extends Component {
              }}/>
       <Wheel ref={this.drums.hihat}
              initialState={{active: [0, 2, 4, 6, 8, 10, 12, 14, 16]}}
-             bpm={120} sound={{
+             bpm={this.state.bpm} sound={{
                name: 'Hi-Hat',
                volume: 8,
                instrument: 42,
                url: process.env.PUBLIC_URL + '/sounds/hat.mp3'
              }}/>
+      <div className='bpm'><input maxLength={3} defaultValue={this.state.bpm} disabled={this.state.playing} onChange={this.handleBpmChange}/>bpm</div>
       <button onClick={this.handlePlayClick}>{this.state.playing ? 'Stop' : 'Play'}</button>
       <div style={{cursor: 'pointer', float: 'right'}} onClick={this.handleExportClick}>
         <Icon icon={exportIcon} color='white'/>
