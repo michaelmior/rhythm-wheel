@@ -29,19 +29,19 @@ class Player extends Component {
       <Wheel ref={this.drums.kick}
              initialState={{active: [0, 8]}}
              bpm={120} sound={{
-               volume: 100,
+               volume: 10,
                url: process.env.PUBLIC_URL + '/sounds/kick.mp3'
              }}/>
       <Wheel ref={this.drums.snare}
              initialState={{active: [4, 12]}}
              bpm={120} sound={{
-               volume: 100,
+               volume: 10,
                url: process.env.PUBLIC_URL + '/sounds/snare.mp3'
              }}/>
       <Wheel ref={this.drums.hihat}
              initialState={{active: [0, 2, 4, 6, 8, 10, 12, 14, 16]}}
              bpm={120} sound={{
-               volume: 80,
+               volume: 8,
                url: process.env.PUBLIC_URL + '/sounds/hat.mp3'
              }}/>
       <button style={{clear: 'both', display: 'block', margin: '0 auto', position: 'relative', top: '20px', fontSize: '20px'}} onClick={this.handleClick}>{this.state.playing ? 'Pause' : 'Play'}</button></div>;
