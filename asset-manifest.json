@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.dd35c4ed.chunk.css",
-    "main.js": "/static/js/main.2fd261bf.chunk.js",
-    "main.js.map": "/static/js/main.2fd261bf.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/js/2.6e4a076c.chunk.js": "/static/js/2.6e4a076c.chunk.js",
-    "static/js/2.6e4a076c.chunk.js.map": "/static/js/2.6e4a076c.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.ca04e069fa98443718ab2dbab163aad2.js": "/precache-manifest.ca04e069fa98443718ab2dbab163aad2.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.dd35c4ed.chunk.css.map": "/static/css/main.dd35c4ed.chunk.css.map"
+    "main.css": "/rhythm-wheel/static/css/main.dd35c4ed.chunk.css",
+    "main.js": "/rhythm-wheel/static/js/main.675ca3bd.chunk.js",
+    "main.js.map": "/rhythm-wheel/static/js/main.675ca3bd.chunk.js.map",
+    "runtime~main.js": "/rhythm-wheel/static/js/runtime~main.87d36757.js",
+    "runtime~main.js.map": "/rhythm-wheel/static/js/runtime~main.87d36757.js.map",
+    "static/js/2.6e4a076c.chunk.js": "/rhythm-wheel/static/js/2.6e4a076c.chunk.js",
+    "static/js/2.6e4a076c.chunk.js.map": "/rhythm-wheel/static/js/2.6e4a076c.chunk.js.map",
+    "index.html": "/rhythm-wheel/index.html",
+    "precache-manifest.e1b80a029348c0fa315fba45a537e40d.js": "/rhythm-wheel/precache-manifest.e1b80a029348c0fa315fba45a537e40d.js",
+    "service-worker.js": "/rhythm-wheel/service-worker.js",
+    "static/css/main.dd35c4ed.chunk.css.map": "/rhythm-wheel/static/css/main.dd35c4ed.chunk.css.map"
   }
 }
