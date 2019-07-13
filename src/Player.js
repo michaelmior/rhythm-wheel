@@ -69,7 +69,7 @@ class Player extends Component {
   }
 
   render() {
-    return <div className='Player' style={{margin: '50px auto 0 auto', width: '1000px', textAlign: 'center'}}>
+    return <div className='Player' style={{width: '1000px', textAlign: 'center', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}>
       <Wheel ref={this.drums.crash}
              initialState={{active: [0]}}
              bpm={120} sound={{
