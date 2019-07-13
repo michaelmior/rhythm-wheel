@@ -1272,26 +1272,6 @@
     react-lifecycles-compat "^3.0.4"
     warning "^3.0.0"
 
-"@storybook/addon-actions@^5.1.9":
-  version "5.1.9"
-  resolved "https://registry.npm.taobao.org/@storybook/addon-actions/download/@storybook/addon-actions-5.1.9.tgz#a515b62b109cb886ccd75ef2f5b12f8c27b43dd3"
-  integrity sha1-pRW2KxCcuIbM117y9bEvjCe0PdM=
-  dependencies:
-    "@storybook/addons" "5.1.9"
-    "@storybook/api" "5.1.9"
-    "@storybook/components" "5.1.9"
-    "@storybook/core-events" "5.1.9"
-    "@storybook/theming" "5.1.9"
-    core-js "^3.0.1"
-    fast-deep-equal "^2.0.1"
-    global "^4.3.2"
-    lodash "^4.17.11"
-    polished "^3.3.1"
-    prop-types "^15.7.2"
-    react "^16.8.3"
-    react-inspector "^3.0.2"
-    uuid "^3.3.2"
-
 "@storybook/addon-backgrounds@^5.1.9":
   version "5.1.9"
   resolved "https://registry.npm.taobao.org/@storybook/addon-backgrounds/download/@storybook/addon-backgrounds-5.1.9.tgz#bb02aaaf9246624b06630a40f008cf81496b5199"
@@ -1307,20 +1287,6 @@
     memoizerific "^1.11.3"
     react "^16.8.3"
     util-deprecate "^1.0.2"
-
-"@storybook/addon-links@^5.1.9":
-  version "5.1.9"
-  resolved "https://registry.npm.taobao.org/@storybook/addon-links/download/@storybook/addon-links-5.1.9.tgz#944237bfb318cf4741b417d2b452b0b644650868"
-  integrity sha1-lEI3v7MYz0dBtBfStFKwtkRlCGg=
-  dependencies:
-    "@storybook/addons" "5.1.9"
-    "@storybook/core-events" "5.1.9"
-    "@storybook/router" "5.1.9"
-    common-tags "^1.8.0"
-    core-js "^3.0.1"
-    global "^4.3.2"
-    prop-types "^15.7.2"
-    qs "^6.6.0"
 
 "@storybook/addons@5.1.9", "@storybook/addons@^5.1.9":
   version "5.1.9"
@@ -6160,14 +6126,6 @@ is-directory@^0.3.1:
   resolved "https://registry.npm.taobao.org/is-directory/download/is-directory-0.3.1.tgz#61339b6f2475fc772fd9c9d83f5c8575dc154ae1"
   integrity sha1-YTObbyR1/Hcv2cnYP1yFddwVSuE=
 
-is-dom@^1.0.9:
-  version "1.1.0"
-  resolved "https://registry.npm.taobao.org/is-dom/download/is-dom-1.1.0.tgz#af1fced292742443bb59ca3f76ab5e80907b4e8a"
-  integrity sha1-rx/O0pJ0JEO7Wco/dqtegJB7Too=
-  dependencies:
-    is-object "^1.0.1"
-    is-window "^1.0.2"
-
 is-extendable@^0.1.0, is-extendable@^0.1.1:
   version "0.1.1"
   resolved "https://registry.npm.taobao.org/is-extendable/download/is-extendable-0.1.1.tgz#62b110e289a471418e3ec36a617d472e301dfc89"
@@ -6237,11 +6195,6 @@ is-obj@^1.0.0, is-obj@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/is-obj/download/is-obj-1.0.1.tgz#3e4729ac1f5fde025cd7d83a896dab9f4f67db0f"
   integrity sha1-PkcprB9f3gJc19g6iW2rn09n2w8=
-
-is-object@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.npm.taobao.org/is-object/download/is-object-1.0.1.tgz#8952688c5ec2ffd6b03ecc85e769e02903083470"
-  integrity sha1-iVJojF7C/9awPsyF52ngKQMINHA=
 
 is-path-cwd@^1.0.0:
   version "1.0.0"
@@ -6331,11 +6284,6 @@ is-typedarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/is-typedarray/download/is-typedarray-1.0.0.tgz#e479c80858df0c1b11ddda6940f96011fcda4a9a"
   integrity sha1-5HnICFjfDBsR3dppQPlgEfzaSpo=
-
-is-window@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npm.taobao.org/is-window/download/is-window-1.0.2.tgz#2c896ca53db97de45d3c33133a65d8c9f563480d"
-  integrity sha1-LIlspT25feRdPDMTOmXYyfVjSA0=
 
 is-windows@^1.0.2:
   version "1.0.2"
@@ -9547,15 +9495,6 @@ react-hotkeys@2.0.0-pre4:
   resolved "https://registry.npm.taobao.org/react-hotkeys/download/react-hotkeys-2.0.0-pre4.tgz#a1c248a51bdba4282c36bf3204f80d58abc73333"
   integrity sha1-ocJIpRvbpCgsNr8yBPgNWKvHMzM=
   dependencies:
-    prop-types "^15.6.1"
-
-react-inspector@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.npm.taobao.org/react-inspector/download/react-inspector-3.0.2.tgz#c530a06101f562475537e47df428e1d7aff16ed8"
-  integrity sha1-xTCgYQH1YkdVN+R99Cjh16/xbtg=
-  dependencies:
-    babel-runtime "^6.26.0"
-    is-dom "^1.0.9"
     prop-types "^15.6.1"
 
 react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
