@@ -11,6 +11,7 @@ class Player extends Component {
     this.hasPlayed = false;
     this.state = {playing: false};
     this.drums = {
+      crash: React.createRef(),
       hihat: React.createRef(),
       kick: React.createRef(),
       snare: React.createRef()
@@ -25,6 +26,7 @@ class Player extends Component {
     if (this.hasPlayed) {
       this.play();
     } else {
+      this.drums.crash.current.preparePlay();
       this.drums.hihat.current.preparePlay();
       this.drums.kick.current.preparePlay();
       this.drums.snare.current.preparePlay();
@@ -36,13 +38,21 @@ class Player extends Component {
   play = () => {
     this.hasPlayed = true;
 
+    this.drums.crash.current.playOrPause();
     this.drums.hihat.current.playOrPause();
     this.drums.kick.current.playOrPause();
     this.drums.snare.current.playOrPause();
   }
 
   render() {
-    return <div className='Player' style={{margin: '50px auto 0 auto', width: '800px', textAlign: 'center'}}>
+    return <div className='Player' style={{margin: '50px auto 0 auto', width: '1000px', textAlign: 'center'}}>
+      <Wheel ref={this.drums.crash}
+             initialState={{active: [0]}}
+             bpm={120} sound={{
+               name: 'Crash',
+               volume: 10,
+               url: process.env.PUBLIC_URL + '/sounds/crash.mp3'
+             }}/>
       <Wheel ref={this.drums.kick}
              initialState={{active: [0, 8]}}
              bpm={120} sound={{
