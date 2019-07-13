@@ -18,6 +18,7 @@ class Wheel extends Component {
 
     this.playOrPause = this.playOrPause.bind(this);
     this.scheduler = this.scheduler.bind(this);
+    this.bounce = React.createRef();
   }
 
   soundLoader(path) {
@@ -49,6 +50,7 @@ class Wheel extends Component {
   }
 
   scheduler() {
+    window.requestAnimationFrame(() => this.updateBounce());
     while (this.futureTickTime < this.audioContext.currentTime + 0.1) {
       this.playOrNot();
       this.futureTick();
@@ -70,13 +72,23 @@ class Wheel extends Component {
     }
 
     this.playing = !this.playing;
+    this.startTickTime = this.audioContext.currentTime;
     if (this.playing) {
       this.current = 0;
       this.futureTickTime = this.audioContext.currentTime;
       this.scheduler();
+      this.bounce.current.style.webkitAnimationPlayState = 'running';
     } else {
+      this.bounce.current.style.webkitAnimationPlayState = 'paused';
+      this.updateBounce();
       window.clearTimeout(this.timeout);
     }
+  }
+
+  updateBounce() {
+    const coords = this.pointCoords((this.audioContext.currentTime - this.startTickTime) * (this.props.bpm / 15) % this.props.subdivisions);
+    this.bounce.current.style.top = coords.y + 'px';
+    this.bounce.current.style.left = coords.x + 'px';
   }
 
   futureTick() {
@@ -88,7 +100,7 @@ class Wheel extends Component {
   pointCoords(subdivision) {
     const angle = (Math.PI * 2) / this.props.subdivisions * subdivision;
     const x = this.props.radius / 2 - smallRadius + Math.sin(angle) * (this.props.radius + smallRadius) / 2 + padding;
-    const y = this.props.radius / 2 - smallRadius + Math.cos(angle) * (this.props.radius + smallRadius) / 2 + padding;
+    const y = this.props.radius - (this.props.radius / 2 - smallRadius + Math.cos(angle) * (this.props.radius + smallRadius) / 2) + padding / 2;
 
     return {x, y};
   }
@@ -117,10 +129,16 @@ class Wheel extends Component {
       lines.push(<line key={'line' + i} x1={coords.x} y1={coords.y} x2={prevCoords.x} y2={prevCoords.y} stroke='black' strokeWidth='2' />);
     }
 
-    return <div style={{position: 'relative', padding: padding + 'px', display: 'inline-block'}}>
+    const coords = this.pointCoords(0);
+    return <div className='Wheel' style={{position: 'relative', padding: padding + 'px', display: 'inline-block'}}>
       <svg style={{pointerEvents: 'none', position: 'absolute', top: padding / 2 + 'px', left: padding / 2 + 'px', zIndex: 100}} width={this.props.radius + smallRadius * 4} height={this.props.radius + smallRadius * 4}>
         {lines}
       </svg>
+
+      <div ref={this.bounce} className='bounce' style={{position: 'absolute', top: coords.y + 'px', left: coords.x + 'px', zIndex: 999, pointerEvents: 'none'}}>
+        <Circle borderColor='green' backgroundColor='green' radius={(smallRadius * 2) + 'px'}/>
+      </div>
+
       <Circle borderColor='white' radius={this.props.radius + 'px'}>{Array.from({length: this.props.subdivisions}, (_, i) => {
       const coords = this.pointCoords(i);
       return <div key={'refCircle' + i} style={{

@@ -44,7 +44,7 @@ class Player extends Component {
                volume: 8,
                url: process.env.PUBLIC_URL + '/sounds/hat.mp3'
              }}/>
-      <button style={{clear: 'both', display: 'block', margin: '0 auto', position: 'relative', top: '20px', fontSize: '20px'}} onClick={this.handleClick}>{this.state.playing ? 'Pause' : 'Play'}</button></div>;
+      <button style={{clear: 'both', display: 'block', margin: '0 auto', position: 'relative', top: '20px', fontSize: '20px'}} onClick={this.handleClick}>{this.state.playing ? 'Stop' : 'Play'}</button></div>;
   }
 }
 
