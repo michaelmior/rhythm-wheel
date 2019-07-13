@@ -9,7 +9,8 @@ class Circle extends Component {
       borderColor: this.props.borderColor,
       borderRadius: this.props.radius,
       width: this.props.radius,
-      height: this.props.radius
+      height: this.props.radius,
+      position: 'relative'
     }}>{this.props.children}</div>;
   }
 }

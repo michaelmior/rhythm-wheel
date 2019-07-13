@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import Circle from './Circle';
 
+import './Wheel.css';
+
 const smallRadius = 2;
 const padding = 10;
 
@@ -19,6 +21,7 @@ class Wheel extends Component {
     this.playOrPause = this.playOrPause.bind(this);
     this.scheduler = this.scheduler.bind(this);
     this.bounce = React.createRef();
+    this.refCircle = React.createRef();
   }
 
   soundLoader(path) {
@@ -62,6 +65,12 @@ class Wheel extends Component {
     if (!this.state.active.includes(this.current)) {
       return;
     }
+
+    this.refCircle.current.setAttribute('class', 'pulse-anim');
+    window.setTimeout(() => {
+      this.refCircle.current.setAttribute('class', '');
+    }, 100);
+
     this.soundBuffer.play(this.futureTickTime);
   }
 
@@ -139,17 +148,19 @@ class Wheel extends Component {
         <Circle borderColor='green' backgroundColor='green' radius={(smallRadius * 2) + 'px'}/>
       </div>
 
-      <Circle borderColor='white' radius={this.props.radius + 'px'}>{Array.from({length: this.props.subdivisions}, (_, i) => {
-      const coords = this.pointCoords(i);
-      return <div key={'refCircle' + i} style={{
-        cursor: 'pointer',
-        position: 'absolute',
-        top: coords.y + 'px',
-        left: coords.x + 'px'
-      }} onClick={this.handleClick.bind(this, i)}>
-        <Circle borderColor='white' backgroundColor='white' radius={(smallRadius * 2) + 'px'}/>
+      <div ref={this.refCircle}>
+        <Circle borderColor='white' radius={this.props.radius + 'px'}>{Array.from({length: this.props.subdivisions}, (_, i) => {
+        const coords = this.pointCoords(i);
+        return <div key={'refCircle' + i} style={{
+          cursor: 'pointer',
+          position: 'absolute',
+          top: (coords.y - padding - smallRadius * 1.6) + 'px',
+          left: (coords.x - padding - smallRadius * 1.5) + 'px'
+        }} onClick={this.handleClick.bind(this, i)}>
+          <Circle borderColor='white' backgroundColor='white' radius={(smallRadius * 2) + 'px'}/>
+        </div>
+        })}</Circle>
       </div>
-      })}</Circle>
       {this.state.active.map(i => {
         const coords = this.pointCoords(i);
         return <div key={'beatCircle' + i} style={{
