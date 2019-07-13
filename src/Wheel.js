@@ -22,6 +22,20 @@ class Wheel extends Component {
     return {x, y};
   }
 
+  handleClick = (beat) => {
+    this.setState((state) => {
+      let active = state.active.slice();
+      if (active.includes(beat)) {
+        const index = active.indexOf(beat);
+        active.splice(index, 1);
+      } else {
+        active.push(beat);
+        active.sort((a, b) => a - b);
+      }
+      return {...state, active};
+    });
+  }
+
   render() {
     let lines = [];
     let lineIndexes = this.state.active.slice();
@@ -43,7 +57,7 @@ class Wheel extends Component {
         position: 'absolute',
         top: coords.y + 'px',
         left: coords.x + 'px'
-      }}>
+      }} onClick={this.handleClick.bind(this, i)}>
         <Circle borderColor='white' backgroundColor='white' radius={(smallRadius * 2) + 'px'}/>
       </div>
       })}</Circle>
