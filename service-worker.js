@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/rhythm-wheel/precache-manifest.b2c646b84c6581d9953522f10c6ae927.js"
+  "/rhythm-wheel/precache-manifest.6896a1aeca23a3a389ea53261e042ad2.js"
 );
 
 self.addEventListener('message', (event) => {
