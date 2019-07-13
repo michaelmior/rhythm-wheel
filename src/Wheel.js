@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import MidiWriter from 'midi-writer-js';
+
 import Circle from './Circle';
 
 import './Wheel.css';
@@ -26,6 +28,26 @@ class Wheel extends Component {
 
   componentDidMount() {
     this.soundBuffer = this.soundLoader(this.props.sound.url);
+  }
+
+  exportTrack() {
+    let wait = 0;
+    const track = new MidiWriter.Track();
+    track.setTempo(this.props.bpm);
+    for (let i = 0; i < this.props.subdivisions; i++) {
+      if (this.state.active.includes(i)) {
+        track.addEvent(new MidiWriter.NoteEvent({
+          channel: 10,
+          pitch: this.props.sound.instrument,
+          duration: '16',
+          wait: Array(wait).fill('16')
+        }))
+        wait = 0;
+      } else {
+        wait += 1;
+      }
+    }
+    return track;
   }
 
   soundLoader(path) {

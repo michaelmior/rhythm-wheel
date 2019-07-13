@@ -7447,6 +7447,13 @@ micromatch@^3.1.10, micromatch@^3.1.4, micromatch@^3.1.8:
     snapdragon "^0.8.1"
     to-regex "^3.0.2"
 
+midi-writer-js@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.npm.taobao.org/midi-writer-js/download/midi-writer-js-1.7.1.tgz#3d732dbc4946c800a6fd26b5aecbb266ad63127d"
+  integrity sha1-PXMtvElGyACm/Sa1rsuyZq1jEn0=
+  dependencies:
+    tonal-midi "^0.69.7"
+
 miller-rabin@^4.0.0:
   version "4.0.1"
   resolved "https://registry.npm.taobao.org/miller-rabin/download/miller-rabin-4.0.1.tgz#f080351c865b0dc562a8462966daa53543c78a4d"
@@ -7849,6 +7856,11 @@ normalize-url@^3.0.0:
   version "3.3.0"
   resolved "https://registry.npm.taobao.org/normalize-url/download/normalize-url-3.3.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnormalize-url%2Fdownload%2Fnormalize-url-3.3.0.tgz#b2e1c4dc4f7c6d57743df733a4f5978d18650559"
   integrity sha1-suHE3E98bVd0PfczpPWXjRhlBVk=
+
+note-parser@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.npm.taobao.org/note-parser/download/note-parser-2.0.1.tgz#2438fd57a46894b402b3a2071798660129c8fbc1"
+  integrity sha1-JDj9V6RolLQCs6IHF5hmASnI+8E=
 
 npm-bundled@^1.0.1:
   version "1.0.6"
@@ -11131,6 +11143,13 @@ toidentifier@1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/toidentifier/download/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
   integrity sha1-fhvjRw8ed5SLxD2Uo8j013UrpVM=
+
+tonal-midi@^0.69.7:
+  version "0.69.7"
+  resolved "https://registry.npm.taobao.org/tonal-midi/download/tonal-midi-0.69.7.tgz#e754ec93f3dbdb28a6d39d42457c33ad245ffa47"
+  integrity sha1-51Tsk/Pb2yim051CRXwzrSRf+kc=
+  dependencies:
+    note-parser "^2.0.1"
 
 tough-cookie@^2.3.3, tough-cookie@^2.3.4, tough-cookie@^2.5.0:
   version "2.5.0"

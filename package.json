@@ -6,6 +6,7 @@
   "dependencies": {
     "@storybook/addon-backgrounds": "^5.1.9",
     "gh-pages": "^2.0.1",
+    "midi-writer-js": "^1.7.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-github-corner": "^2.3.0",
