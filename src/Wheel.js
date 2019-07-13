@@ -119,7 +119,7 @@ class Wheel extends Component {
       lines.push(<line key={'line' + i} x1={coords.x} y1={coords.y} x2={prevCoords.x} y2={prevCoords.y} stroke='black' strokeWidth='2' />);
     }
 
-    return <div style={{position: 'relative', padding: padding + 'px', float: 'left'}}>
+    return <div style={{position: 'relative', padding: padding + 'px', display: 'inline-block'}}>
       <svg style={{pointerEvents: 'none', position: 'absolute', top: padding / 2 + 'px', left: padding / 2 + 'px', zIndex: 100}} width={this.props.radius + smallRadius * 4} height={this.props.radius + smallRadius * 4}>
         {lines}
       </svg>
