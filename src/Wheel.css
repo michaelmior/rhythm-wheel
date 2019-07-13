@@ -13,3 +13,8 @@
 .Wheel .pulse-anim {
   animation: pulse 0.1s 1 ease-in;
 }
+
+.Wheel .name {
+  margin-top: 20px;
+  font-weight: bold;
+}

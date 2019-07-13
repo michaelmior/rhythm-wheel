@@ -172,6 +172,7 @@ class Wheel extends Component {
           <Circle borderColor='black' backgroundColor='black' radius={(smallRadius * 2) + 'px'}/>
         </div>
       })}
+      <div className='name'>{this.props.sound.name}</div>
     </div>;
   }
 }

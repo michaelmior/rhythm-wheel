@@ -1,0 +1,13 @@
+.Player button {
+  cursor: pointer;
+  clear: both;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: 20px;
+  font-size: 30px;
+  border: none;
+  background: transparent;
+  color: #EEE;
+  text-transform: uppercase;
+}
