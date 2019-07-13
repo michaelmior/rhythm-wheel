@@ -8,6 +8,7 @@ class Player extends Component {
   constructor() {
     super();
 
+    this.hasPlayed = false;
     this.state = {playing: false};
     this.drums = {
       hihat: React.createRef(),
@@ -20,6 +21,20 @@ class Player extends Component {
     this.setState((state) => {
       return {...state, playing: !state.playing};
     });
+
+    if (this.hasPlayed) {
+      this.play();
+    } else {
+      this.drums.hihat.current.preparePlay();
+      this.drums.kick.current.preparePlay();
+      this.drums.snare.current.preparePlay();
+
+      window.setTimeout(this.play, 100);
+    }
+  }
+
+  play = () => {
+    this.hasPlayed = true;
 
     this.drums.hihat.current.playOrPause();
     this.drums.kick.current.playOrPause();

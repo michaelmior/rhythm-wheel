@@ -24,6 +24,10 @@ class Wheel extends Component {
     this.refCircle = React.createRef();
   }
 
+  componentDidMount() {
+    this.soundBuffer = this.soundLoader(this.props.sound.url);
+  }
+
   soundLoader(path) {
     var soundObject = {};
     var getSound = new XMLHttpRequest();
@@ -32,9 +36,7 @@ class Wheel extends Component {
     getSound.open('GET', path, true);
     getSound.responseType = 'arraybuffer';
     getSound.onload = () => {
-      this.audioContext.decodeAudioData(getSound.response, (buffer) => {
-        soundObject.soundToPlay = buffer;
-      });
+      soundObject.response = getSound.response;
     }
     getSound.send();
 
@@ -76,12 +78,17 @@ class Wheel extends Component {
     this.soundBuffer.play(this.futureTickTime);
   }
 
-  playOrPause() {
+  preparePlay() {
     if (this.props.sound && !this.audioContext) {
       this.audioContext = new AudioContext();
-      this.soundBuffer = this.soundLoader(this.props.sound.url);
+      this.audioContext.decodeAudioData(this.soundBuffer.response, (buffer) => {
+        this.soundBuffer.soundToPlay = buffer;
+        this.soundBuffer.response = null;
+      });
     }
+  }
 
+  playOrPause() {
     this.playing = !this.playing;
     this.startTickTime = this.audioContext.currentTime;
     if (this.playing) {
