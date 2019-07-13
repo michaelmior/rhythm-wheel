@@ -145,7 +145,7 @@ class Wheel extends Component {
       </svg>
 
       <div ref={this.bounce} className='bounce' style={{position: 'absolute', top: coords.y + 'px', left: coords.x + 'px', zIndex: 999, pointerEvents: 'none'}}>
-        <Circle borderColor='green' backgroundColor='green' radius={(smallRadius * 2) + 'px'}/>
+        <Circle borderColor='goldenrod' backgroundColor='goldenrod' radius={(smallRadius * 2) + 'px'}/>
       </div>
 
       <div ref={this.refCircle}>
