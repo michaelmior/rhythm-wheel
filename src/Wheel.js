@@ -8,10 +8,83 @@ const padding = 10;
 class Wheel extends Component {
   constructor(props) {
     super(props);
+
+    this.audioContext = null;
+    this.playing = false;
     this.state = {
       active: [],
       ...props.initialState
     };
+
+    this.playOrPause = this.playOrPause.bind(this);
+    this.scheduler = this.scheduler.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.sound) {
+      this.audioContext = new AudioContext();
+      this.soundBuffer = this.soundLoader(this.props.sound.url);
+    }
+  }
+
+  soundLoader(path) {
+    var soundObject = {};
+    var getSound = new XMLHttpRequest();
+
+    getSound.open('GET', path, true);
+    getSound.responseType = 'arraybuffer';
+    getSound.onload = () => {
+      this.audioContext.decodeAudioData(getSound.response, (buffer) => {
+        soundObject.soundToPlay = buffer;
+      });
+    }
+    getSound.send();
+
+    soundObject.play = (time) => {
+      var volume = this.audioContext.createGain();
+      volume.gain.value = this.props.sound.volume;
+      var playSound = this.audioContext.createBufferSource();
+      playSound.buffer = soundObject.soundToPlay;
+
+      // Volume control
+      playSound.connect(volume);
+      volume.connect(this.audioContext.destination);
+      playSound.start(time);
+    }
+
+    return soundObject;
+  }
+
+  scheduler() {
+    while (this.futureTickTime < this.audioContext.currentTime + 0.1) {
+      this.playOrNot();
+      this.futureTick();
+    }
+    this.timeout = window.setTimeout(this.scheduler, 50.0);
+  }
+
+  playOrNot() {
+    if (!this.state.active.includes(this.current)) {
+      return;
+    }
+    this.soundBuffer.play(this.futureTickTime);
+  }
+
+  playOrPause() {
+    this.playing = !this.playing;
+    if (this.playing) {
+      this.current = 0;
+      this.futureTickTime = this.audioContext.currentTime;
+      this.scheduler();
+    } else {
+      window.clearTimeout(this.timeout);
+    }
+  }
+
+  futureTick() {
+    var noteLength = 60 / this.props.bpm;
+    this.futureTickTime += 0.25 * noteLength;
+    this.current = (this.current + 1) % (this.props.subdivisions);
   }
 
   pointCoords(subdivision) {
@@ -46,7 +119,7 @@ class Wheel extends Component {
       lines.push(<line key={'line' + i} x1={coords.x} y1={coords.y} x2={prevCoords.x} y2={prevCoords.y} stroke='black' strokeWidth='2' />);
     }
 
-    return <div style={{position: 'relative', padding: padding + 'px'}}>
+    return <div style={{position: 'relative', padding: padding + 'px', float: 'left'}}>
       <svg style={{pointerEvents: 'none', position: 'absolute', top: padding / 2 + 'px', left: padding / 2 + 'px', zIndex: 100}} width={this.props.radius + smallRadius * 4} height={this.props.radius + smallRadius * 4}>
         {lines}
       </svg>
