@@ -9528,6 +9528,11 @@ react-focus-lock@^1.18.3:
     prop-types "^15.6.2"
     react-clientside-effect "^1.2.0"
 
+react-github-corner@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.npm.taobao.org/react-github-corner/download/react-github-corner-2.3.0.tgz#73ab17324b670c9cd955567b09663d385cfb05ef"
+  integrity sha1-c6sXMktnDJzZVVZ7CWY9OFz7Be8=
+
 react-helmet-async@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npm.taobao.org/react-helmet-async/download/react-helmet-async-1.0.2.tgz#bb55dd8268f7b15aac69c6b22e2f950abda8cc44"
