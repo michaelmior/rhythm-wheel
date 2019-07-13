@@ -20,13 +20,6 @@ class Wheel extends Component {
     this.scheduler = this.scheduler.bind(this);
   }
 
-  componentDidMount() {
-    if (this.props.sound) {
-      this.audioContext = new AudioContext();
-      this.soundBuffer = this.soundLoader(this.props.sound.url);
-    }
-  }
-
   soundLoader(path) {
     var soundObject = {};
     var getSound = new XMLHttpRequest();
@@ -71,6 +64,11 @@ class Wheel extends Component {
   }
 
   playOrPause() {
+    if (this.props.sound && !this.audioContext) {
+      this.audioContext = new AudioContext();
+      this.soundBuffer = this.soundLoader(this.props.sound.url);
+    }
+
     this.playing = !this.playing;
     if (this.playing) {
       this.current = 0;
