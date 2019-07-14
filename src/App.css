@@ -1,0 +1,27 @@
+.App {
+  height: 100%;
+  width: 100%;
+}
+
+.App footer {
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+  width: 100%;
+  color: black;
+  font-size: 12px;
+  opacity: 0.2;
+}
+
+.App footer:hover {
+  opacity: 1;
+}
+
+.App footer a {
+  color: black;
+  text-decoration: none;
+}
+
+.App footer a:hover {
+  text-decoration: underline;
+}
