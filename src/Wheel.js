@@ -118,8 +118,10 @@ class Wheel extends Component {
       this.futureTickTime = this.audioContext.currentTime;
       this.scheduler();
       this.bounce.current.style.webkitAnimationPlayState = 'running';
+      this.bounce.current.style.display = 'block';
     } else {
       this.bounce.current.style.webkitAnimationPlayState = 'paused';
+      this.bounce.current.style.display = 'none';
       this.updateBounce();
       window.clearTimeout(this.timeout);
     }
