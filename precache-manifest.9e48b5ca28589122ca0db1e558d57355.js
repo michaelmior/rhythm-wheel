@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2ab61535f554668c830ad8357e20fba7",
+    "revision": "387c9cae757661c0817b335fb4716b58",
     "url": "/rhythm-wheel/index.html"
   },
   {
