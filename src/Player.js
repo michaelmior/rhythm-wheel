@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import MidiWriter from 'midi-writer-js';
 import { Icon } from "@iconify/react";
 import exportIcon from '@iconify/icons-uil/export';
+import ReactTooltip from 'react-tooltip';
 
 import Wheel from './Wheel';
 
@@ -111,7 +112,8 @@ class Player extends Component {
              }}/>
       <div className='bpm'><input maxLength={3} defaultValue={this.state.bpm} disabled={this.state.playing} onChange={this.handleBpmChange}/>bpm</div>
       <button onClick={this.handlePlayClick}>{this.state.playing ? 'Stop' : 'Play'}</button>
-      <div style={{cursor: 'pointer', float: 'right'}} onClick={this.handleExportClick}>
+      <div style={{cursor: 'pointer', float: 'right'}} onClick={this.handleExportClick} data-tip='Export as MIDI' data-place='top'>
+        <ReactTooltip/>
         <Icon icon={exportIcon} color='white'/>
       </div>
       </div>;
