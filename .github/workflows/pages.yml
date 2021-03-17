@@ -12,6 +12,8 @@ jobs:
 
       - name: Install node 🔨
         uses: actions/setup-node@v2
+        with:
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install and Build 🔧
         run: |
